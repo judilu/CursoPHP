@@ -1,6 +1,7 @@
 <?php
 
     //echo 'Hola mundoo!';
+    //carlos Toscano
     /*
         DECLARAR VARIABLES
         $variableStringg = "cadena"; 
@@ -503,3 +504,115 @@
         $objeto
 
     */
+
+    /*
+      MARTES/06/06/2017
+      //Configurar la base de datos
+      localhost/phpmyadmin  
+
+    */
+    function obtenerConexion()
+    {
+        /*Se crea un objeto de conexión se le manda el manejador, la ip, la base de datos .- eso en una sola cadena
+        además se manda el usuario y la contraseña y un array el cual es opcionales esto es para el manejo de errores
+        los :: hacer referencia a un miembro estatico. */
+        return new PDO('mysql:host=127.0.0.1;dbname=test',
+        'root','',
+        array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+    }
+    /*
+    $db = obtenerConexion();
+
+    $query = "SELECT 'Hola mundo!' AS des_texto;";
+
+    $statement = $db->prepare($query);
+    
+    $statement->execute(); */
+    /*El metodo fetch recibe un parametro que le puede devolver array asociativo o numerico o los dos si no se le coloca nada
+    PDO::FETCH_BOTH.- Muestra ambos un arreglo asociativo y un numerico
+    PDO::FETCH_NUM.- Solo regresa el arreglo númerico
+    PDO::FETCH_ASSOC Solo regresa el arreglo asociativo 
+    // Si viene un conjunto de registros yo podria utilizar un while o tambien puedo utilizar un fetchAll*/
+    /*if ($entry = $statement->fetch(PDO::FETCH_ASSOC)) {
+        var_dump($entry);
+    } else {
+        echo "No fue posible recuperar los datos";
+    }*/
+    /* mas de un registro
+    if ($entry = $statement->fetchAll(PDO::FETCH_ASSOC)) {
+        var_dump($entry[0]["des_texto"]);
+    } else {
+        echo "No fue posible recuperar los datos";
+    }*/
+
+    /*
+    function altaCliente($cliente)
+    {
+         $db = obtenerConexion();
+        /* EOD me permite poner texto en multiples lineas yo puedo ponerle el nombre que yo quiera en vez de EOD Apartir
+        del primer EDO no debe haber ningun caracter despues 
+        y el EOD final debe estar hasta la horilla y no debe tener nada despues del ;
+        si una función recibe más de 3 parametros enviarlo por un STDclass*/ /*
+        $query = <<<EOD
+            INSERT INTO cat_clientes (nom_cliente, nom_apellido, num_tipocredito)
+            VALUES (:nombre, :apellido, :tipo);
+
+EOD;
+
+        $statement = $db->prepare($query);
+        /*nombre del parametro que le puse en la instrucción, el valor, y el tipo de parametro
+        Esto nos permite evitar la inyección de código el tipo de parametro es opcional y si no le mando nada
+        toma por default el param-string
+        */
+        /*
+        $statement->bindValue('nombre',$cliente->nombre, PDO::PARAM_STR);
+        $statement->bindValue('apellido',$cliente->apellido, PDO::PARAM_STR);
+        $statement->bindValue('tipo',$cliente->tipoCredito, PDO::PARAM_INT);
+        
+        $statement->execute();
+
+        return $statement->rowCount() > 0;
+    }
+
+    $cliente = new stdClass();
+    $cliente->nombre = 'Jose';
+    $cliente->apellido = 'Lopez';
+    $cliente->tipoCredito = 2;
+
+    var_dump(altaCliente($cliente)); */
+
+    /*
+        MODELO-VISTA-CONTROLADOR
+        Modelo.- Manejo de datos
+        Controlador.- Peticiones
+        Vista.- Diseño
+
+        SERVICIOS REST Web Service trabaja sobre HTTP
+        GET.- Pedir algo el cuál no tiene cuerpo GET/tiendas   GET/tiendas/230
+        POST.- TIENE cuerpo y se utiliza para insertar POST/tiendas
+        PUT.- Tiene cuerpo y se utiliza para actualizar (modificación) PUT /tiendas/230
+        DELETE.- Tiene cuerpo y se utiliza par aun borrado DELETE /tiendas/230
+
+        regla para url en minuscula y plural
+
+        --Proyecto .- Carpeta delproyecto
+            -controllers.- aqui van los controles
+            - models.- aqui van los modelos
+            - logs.- aqui van los logs
+            - test.- esta carpeta no existe la crearemos es para las pruebas
+            composer.json
+            config.json
+            index.php.- este casi no se mueve
+            Module.php .- rutas
+            codecept.phar .- 
+            htaccess
+
+            Para instalar el rac
+            hay que descarar el archivo pegarlo en C
+            e irnos a la consola de comandos tecleamos npm i -g y damos enter
+
+            creamos una carpeta la cual sera la de nuestro proyecto, damos shift y clic derecho y abrimos la consola y tecleamos
+            yo rac (enter)
+
+    */
+
